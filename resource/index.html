@@ -1,0 +1,18 @@
+<script>
+    function fetchTodoData() {
+        return new Promise(function (receive) {
+            fetch('http://127.0.0.1:3000/read-user?uid=test1')
+            .then(function (response) {
+                return response.json();
+            })
+            .then(function (data) {
+                receive(JSON.stringify(data));
+            });
+        });
+    }
+
+    (async function () {
+        jsonData = await fetchTodoData();
+        document.write(jsonData);
+    })();
+</script>

@@ -5,6 +5,7 @@ const connection = mysql.createConnection(dbconfig);
 
 const app = express();
 
+app.use('/static', express.static(__dirname + '/resource'));
 app.set('port', process.env.PORT || 3000);
 
 // body parsing
@@ -13,7 +14,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // ROOT
 app.get('/', (req, res) => {
-	res.send('Root route');
+  res.sendFile(__dirname + "/resource/index.html");
 });
 
 // CREATE
